@@ -1,0 +1,419 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ * https://infima.dev/
+ * 
+ * Colour Generation for :root
+ * https://docusaurus.io/docs/styling-layout
+ */
+
+/* You can override the default Infima variables here. */
+
+@font-face {
+  font-family: "Red Hat Mono";
+  src: url(fonts/RedHatMono-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: "Red Hat Display";
+  src: url(fonts/RedHatDisplay-VariableFont_wght.ttf);
+}
+
+:root {
+  --ifm-color-primary: #1461b8;
+  --ifm-color-primary-dark: #1257a6;
+  --ifm-color-primary-darker: #11529c;
+  --ifm-color-primary-darkest: #0e4481;
+  --ifm-color-primary-light: #166bca;
+  --ifm-color-primary-lighter: #1770d4;
+  --ifm-color-primary-lightest: #1979e6;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-font-family-base: "Red Hat Display", Arial, Helvetica, sans-serif;
+  --ifm-font-family-monospace: "Red Hat Mono", "Courier New", monospace;
+  background-color: whitesmoke;
+  font-size: 1.1rem;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #6db0ff;
+  --ifm-color-primary-dark: #499cff;
+  --ifm-color-primary-darker: #3692ff;
+  --ifm-color-primary-darkest: #0075ff;
+  --ifm-color-primary-light: #daebff;
+  --ifm-color-primary-lighter: #a4ceff;
+  --ifm-color-primary-lightest: #91c4ff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-pre-background: #003cac;
+  background-color: rgb(38, 38, 38);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+main {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.blue-theme {
+  background-color: #3d8de9;
+  color: white;
+}
+
+[data-theme="dark"] .blue-theme {
+  background-color: #0e4481;
+}
+
+.navbar {
+  display: flex;
+  position: sticky;
+  z-index: 10000;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .navbar {
+  background-color: rgba(38, 38, 38, 0.7);
+}
+
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.about-viewport {
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 4rem;
+  }
+}
+
+.welcome,
+.sponsor,
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0%;
+}
+
+/* ----------------------------- Welcome Section ---------------------------- */
+
+.welcome {
+  background-image: url(@site/static/img/background.svg);
+  background-repeat: none;
+  background-size: cover;
+  background-position: center;
+}
+
+[data-theme="dark"] .welcome {
+  background-image: url(@site/static/img/background-dark.svg);
+}
+
+.welcome-info {
+  display: block;
+  text-align: center;
+  align-content: space-between;
+  padding: 25%;
+  @media screen and (max-width: 1920px) and (orientation: landscape) {
+    padding: 15%;
+    @media screen and (max-width: 1024px) and (orientation: landscape) {
+      padding: 10%;
+    }
+  }
+}
+
+.welcome-logo {
+  display: inline-block;
+  max-width: 50%;
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    padding-bottom: 5%;
+    max-width: 100%;
+  }
+}
+
+[data-theme="dark"] .welcome-logo {
+  display: none;
+}
+
+.welcome-logo-dark {
+  display: none;
+}
+
+[data-theme="dark"] .welcome-logo-dark {
+  display: inline-block;
+  max-width: 50%;
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    padding-bottom: 5%;
+    max-width: 100%;
+  }
+}
+
+.welcome-h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  @media screen and (max-width: 1920px) {
+    font-size: 1.75rem;
+    @media screen and (max-width: 786px) {
+      padding: 0%;
+      font-size: 1rem;
+    }
+  }
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-around;
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.static-button {
+  align-items: center;
+  justify-items: center;
+  border-radius: 15px;
+  border: 1px solid transparent;
+  padding: 1rem;
+  margin: 2% 0.5% 2% 0.5%;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #7d46ad;
+  color: white;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  width: 100%;
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    margin: 5% 0;
+    @media screen and (max-width: 768px) {
+      padding: 5%;
+    }
+  }
+}
+
+.static-button:hover {
+  background-color: #6db0ff;
+  color: white;
+  transition: 0.2s;
+}
+
+[data-theme="dark"] .static-button:hover {
+  background-color: #0e4481;
+  color: white;
+  transition: 0.2s;
+}
+
+/* ------------------------------ About Section ----------------------------- */
+
+.about {
+  padding: 10% 5% 6rem 5%;
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    padding: 5% 8% 5rem 8%;
+  }
+}
+
+.about-section-1,
+.about-section-2,
+.about-section-3,
+.about-section-4,
+.about-section-5 {
+  padding: 5%;
+  margin: 2%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  @media screen and (max-width: 1024px) {
+    background-color: rgb(14, 68, 129, 0.5);
+    @media screen and (max-width: 1024px) and (orientation: portrait) {
+      padding: 3%;
+      margin: 1%;
+      @media screen and (max-width: 390px) {
+        padding: 4%;
+        margin: 0.5%;
+      }
+    }
+  }
+}
+
+[data-theme="dark"] .about-section-1,
+[data-theme="dark"] .about-section-2,
+[data-theme="dark"] .about-section-3,
+[data-theme="dark"] .about-section-4,
+[data-theme="dark"] .about-section-5 {
+  background-color: rgba(38, 38, 38, 0.7);
+}
+
+.about-section-1 {
+  grid-area: section-1;
+}
+
+.about-section-2 {
+  grid-area: section-2;
+}
+
+.about-section-3 {
+  grid-area: section-3;
+}
+
+.about-section-4 {
+  grid-area: section-4;
+}
+
+.about-section-5 {
+  grid-area: section-5;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas:
+    "section-1 section-1 section-2 section-2 section-3 section-3"
+    ". section-4 section-4 section-5 section-5 .";
+  align-items: center;
+  align-content: stretch;
+  justify-items: center;
+  justify-content: stretch;
+  text-align: center;
+  height: fit-content;
+  row-gap: 5%;
+
+  @media screen and (max-width: 1024px) and (orientation: portrait) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "section-1"
+      "section-2"
+      "section-3"
+      "section-4"
+      "section-5";
+    gap: 2%;
+    @media screen and (max-width: 390px) {
+      gap: 1%;
+    }
+  }
+}
+
+.about-grid > * {
+  justify-self: center;
+  align-self: stretch;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-cloud,
+.about-kubernetes,
+.about-operator,
+.about-example,
+.about-ci {
+  padding: 10% 0;
+  min-height: 150px;
+  max-height: 200px;
+  @media screen and (max-width: 1024px) {
+    height: 25%;
+    padding: 5% 0;
+    @media screen and (max-width: 500px) {
+      height: 15%;
+    }
+  }
+}
+
+.about-header {
+  @media screen and (max-width: 1920px) {
+    font-size: 1.75rem;
+    @media screen and (max-width: 1024px) {
+      font-size: 1.5rem;
+      @media screen and (max-width: 390px) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+
+.about-text {
+  font-size: 1.5rem !important;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  @media screen and (max-width: 1920px) {
+    font-size: 1.3rem !important;
+    @media screen and (max-width: 1512px) {
+      font-size: 1.1rem !important;
+      @media screen and (max-width: 1024px) and (orientation: landscape) {
+        font-size: 0.8rem !important;
+        @media screen and (max-width: 390px) {
+          font-size: 0.9rem !important;
+        }
+      }
+    }
+  }
+}
+
+.icon {
+  padding-right: 2rem;
+}
+
+.hide-for-mobile {
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.show-for-mobile {
+  display: none;
+  @media screen and (max-width: 1024px) {
+    display: block;
+  }
+}
+
+/* ----------------------------- Sponsor Section ---------------------------- */
+
+.sponsor-title {
+  text-align: center;
+}
+
+.sponsor-carousel {
+  padding: 30%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+}
+
+.swiper {
+  width: 50%;
+  height: 50%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.algolia-docsearch-suggestion--category-header {
+  background-color: #7d46ad !important;
+}
+
+.footer--dark {
+  --ifm-footer-background-color: #3d8de9 !important;
+}
+
+[data-theme="dark"] .footer--dark {
+  --ifm-footer-background-color: #0e4481 !important;
+}
