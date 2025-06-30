@@ -16,8 +16,8 @@ const config = {
 
   // Set the production url of your site here
   // When forking, please change url to GIT_USER.github.io and baseUrl to fork repo name
-  url: "https://jessicachitas.github.io",
-  baseUrl: "/arkmq-org.github.io/",
+  url: "https://arkmq.org",
+  baseUrl: "/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -28,7 +28,7 @@ const config = {
   // SWITCH TO ABOVE ORGNAME AND PROJECT NAME WHEN READY TO BE DEPLOYED
 
   // When forking, please change organisationName to your GitHub username and projectName to your fork repo name
-  organizationName: "jessicachitas",
+  organizationName: "arkmq-org",
   projectName: "arkmq-org.github.io",
 
   onBrokenLinks: "throw",
