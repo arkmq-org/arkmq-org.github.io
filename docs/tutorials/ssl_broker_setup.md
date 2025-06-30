@@ -1,8 +1,14 @@
 ---
-id: ssl-broker-setup
+title: "Setting up SSL connections with Arkmq-org Operator"  
+description: "An example for setting up ssl connections for broker in kubernetes with operator"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Setting up SSL connections with Arkmq-org Operator
 
 Security is always a concern in a production environment. With arkmq-org Operator
 You can easily configure and set up a broker with ssl-enabled acceptors. The blog explains how to do it.
@@ -16,7 +22,7 @@ Before you start you need have access to a running Kubernetes cluster environmen
 
 ### Deploy Arkmq-org operator
 First you need to deploy the arkmq-org operator.
-If you are not sure how to deploy the operator take a look at [this blog](/docs/tutorials/using-operator.md).
+If you are not sure how to deploy the operator take a look at [this blog](using_operator.md).
 
 In this blog post we assume you deployed the operator to a namespace called **myproject**.
 

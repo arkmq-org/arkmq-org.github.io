@@ -1,11 +1,10 @@
 ---
 title: "Help"
+description: "Help Arkmq-org."
+lead: ""
+date: 2020-10-06T08:49:15+00:00
+lastmod: 2020-10-06T08:49:15+00:00
+draft: false
+images: []
+weight: 20
 ---
-
-Index:
-- [Resolve your Cluster Domain](001-hostname-resolution.md)
-- [Building](002-building.md)
-- [Bundle](003-bundle.md)
-- [Custom Resources](004-custom-resources.md)
-- [Images](005-images.md)
-- [Operator](006-operator.md)

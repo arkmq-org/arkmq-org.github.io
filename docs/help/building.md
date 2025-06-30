@@ -1,8 +1,19 @@
 ---
-sidebar_position: 2
-id: building
+title: "Building"
+description: "Building arkmq-org.io"
+lead: "Building arkmq-org.io"
+date: 2020-10-06T08:49:31+00:00
+lastmod: 2020-10-06T08:49:31+00:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "help"
+weight: 630
+toc: true
 ---
-# Building
+
+# Building the operator
 
 ## Prerequisites
 
@@ -70,4 +81,4 @@ or use the make target **docker-push**
 make OPERATOR_IMAGE_REPO=<your repo> OPERATOR_VERSION=<tag> docker-push
 ```
 
-Now follow the [quickstart](../getting-started/001-quick-start.md) to deploy the operator.
+Now follow the [quickstart](../getting-started/quick-start.md) to deploy the operator.

@@ -1,8 +1,14 @@
 ---
-id: initcontainer
+title: "Using the custom init image"  
+description: "Introduction to the operator custom init image"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Using the custom init image
 
 Starting from [v0.18.1](https://github.com/arkmq-org/activemq-artemis-operator/tree/v0.18.1), the arkmq-org Operator
 enables you to specify a **custom Init Container image**. Specifying a custom Init Container image allows you to provide your own broker configuration within the Operator framework.
@@ -58,7 +64,7 @@ After the `post-config.sh` script is executed, the broker instance is launched w
 
     If you need additional resources (`.xml` files, `.jar` files, etc.) for your custom configuration, you need to add them to your image and make sure that they are accessible to your post-config scripts.
 
-2. Next, you need to build your custom Init Container image and put it in a container repository (for example you can create a repository on [Red Hat Quay](https://quay.io)).
+2. Next, you need to build your custom Init Container image and put it in a container repository (for example you can create a repository on [Red Hat Quay](quay.io)).
 
 3. When you have added the image to a repository, you need to configure the Operator to use the custom Init Container image. To do this, edit the CR file. For the `image` property, specify the custom image. For example:
 
@@ -75,7 +81,7 @@ After the `post-config.sh` script is executed, the broker instance is launched w
                 ...
     ```
 
-4. Finally, deploy the CR file in the usual manner. For more information, see [Getting Started with the arkmq-org Operator](/docs/tutorials/using-operator.md).
+4. Finally, deploy the CR file in the usual manner. For more information, see [Getting Started with the arkmq-org Operator](using_operator.md).
 
 ### Further information
 * A fully working example is available [here](https://github.com/arkmq-org/arkmq-org-examples/tree/main/operator/init/jdbc).

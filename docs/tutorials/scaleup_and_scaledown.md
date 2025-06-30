@@ -1,8 +1,14 @@
 ---
-id: scaleup-and-scaledown
+title: "Scaling Up and Down Brokers with arkmq-org Operator"  
+description: "How to use operator to scale up and down broker pods"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Scaling Up and Down Brokers with arkmq-org Operator
 
 With arkmq-org operator one can easily manage the broker clusters.
 Either scaling up number of nodes(pods) when workload is high, or scaling down when some is not needed -- without messages being lost or stuck.
@@ -18,7 +24,7 @@ $ git clone https://github.com/arkmq-org/activemq-artemis-operator.git
 $ cd activemq-artemis-operator
 ```
 
-If you are not sure how to deploy the operator take a look at [this tutorial](/docs/tutorials/using-operator.md).
+If you are not sure how to deploy the operator take a look at [this tutorial](using_operator.md).
 
 In this blog post we assume you deployed the operator to a namespace called **myproject**.
 
@@ -216,4 +222,4 @@ It shows queue TEST's message count is **200** now!
 ### More information
 
 * Check out [arkmq-org project repo](https://github.com/arkmq-org)
-* Reach the [dev team at slack](https://arkmq-org.slack.com) for questions/issues/help
+* Reach the [dev team at slack](arkmq-org.slack.com) for questions/issues/help

@@ -1,8 +1,17 @@
 ---
-id: quick-start
-sidebar_position: 1
+title: "Quick Start"
+description: "One page summary of how to start a new arkmq-org project."
+lead: "One page summary of how to start a new arkmq-org project."
+date: 2020-11-16T13:59:39+01:00
+lastmod: 2020-11-16T13:59:39+01:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "getting-started"
+weight: 110
+toc: true
 ---
-# Quick Start
 
 ## Overview
 
@@ -23,7 +32,7 @@ You can install a [Minikube](https://minikube.sigs.k8s.io/docs/) or a [CodeReady
 
 To launch the operator you will need to clone the [activemq-artemis-operator](https://github.com/arkmq-org/activemq-artemis-operator) and checkout the main branch.
 
-(Optional) Follow the [building](docs/help/002-building.md) instructions, tag, and push it into your project
+(Optional) Follow the [building](../help/building.md) instructions, tag, and push it into your project
 namespace.
 
 ## Deploying the operator
@@ -207,7 +216,6 @@ The drainer pod will contact one of the live pods in the cluster and drain the m
 After the draining is complete it shuts down itself.
 
 The message draining only works when you enabled persistence and messageMigration on broker custome resource.
-
 For example, you can deploy a cluster from our [broker cluster persistence example](../../examples/artemis/artemis_cluster_persistence.yaml)
 
 ```$yaml
@@ -410,3 +418,4 @@ Run this command to undeploy the operator
 ```$shell
 $ ./deploy/undeploy_all.sh
 ```
+

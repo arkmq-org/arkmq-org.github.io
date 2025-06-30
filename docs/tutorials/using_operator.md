@@ -1,8 +1,14 @@
 ---
-id: using-operator
+title: "Using the Arkmq-org Operator"  
+description: "Steps to get operator up and running and basic broker operations"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Using the Arkmq-org Operator
 
 The [arkmq-org](https://github.com/arkmq-org) Operator is a powerful tool that allows you to configure and
 manage ActiveMQ Artemis broker resources in a cloud environment. You can get the Operator running in just a few steps.
