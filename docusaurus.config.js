@@ -118,7 +118,7 @@ const config = {
             items: [{ label: "GitHub", href: "https://github.com/arkmq-org" }],
           },
         ],
-        copyright: `Apache, Apache ActiveMQ Artemis,Artemis and associated open source project names are trademarks of the Apache Software Foundation.`,
+        copyright: `Apache, Apache ActiveMQ Artemis, Artemis and associated open source project names are trademarks of the Apache Software Foundation.`,
       },
       prism: {
         theme: prismThemes.vsLight,
