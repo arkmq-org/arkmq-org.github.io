@@ -127,7 +127,7 @@ spec:
       value: "--zap-log-level=debug"
 ```
 
-Note: The env var name must be **ARGS** and the value is **--zap-log-level={level}** where {level} must
+Note: The env var name must be **ARGS** and the value is **--zap-log-level=\{level\}** where \{level\} must
 be one of **debug**, **info** and **error**. Any other values will be ignored.
 
 After editing the Subscription yaml as such, save it and the operator will restart with the given log level.
