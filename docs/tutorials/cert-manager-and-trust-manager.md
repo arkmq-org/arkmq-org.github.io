@@ -1,8 +1,14 @@
 ---
-id: cert-manager-and-trust-manager
+title: "Setting up SSL with cert-manager and trust-manager"  
+description: "An example for setting up ssl connections using cert-manager and trust-manager projects"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Setting up SSL with cert-manager and trust-manager
 
 A lot of Kubernetes clusters already use cert-manager and trust-manager to handle certificates management.
 
@@ -197,7 +203,7 @@ kubectl create secret generic ssl-acceptor-ssl-secret -n myproject \
 
 Operator will create ActiveMQ resources based on custom resources definitions (CRD).
 
-If you are not sure how to deploy the operator take a look at [here](/docs/tutorials/using-operator.md).
+If you are not sure how to deploy the operator take a look at [here](using_operator.md).
 
 In this tutorial we assume you deployed the operator to a namespace called **activemq-artemis-operator**.
 

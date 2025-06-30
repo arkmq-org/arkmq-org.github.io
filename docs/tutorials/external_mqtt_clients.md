@@ -1,8 +1,14 @@
 ---
-id: external-mqtt-clients
+title: "Connecting to the broker from external mqtt clients"  
+description: "Expose an mqtt acceptor with ssl enabled to accept connections from external mqtt clients"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Connecting to the broker from external mqtt clients
 
 When you expose an acceptor to external clients (that is, by setting the value of the expose parameter to true), the Operator automatically creates an ingress on Kubernetes or a route on OpenShift for each broker pod of the deployment. An external client can connect to the broker by specifying the full host name of the ingress/route created for the broker pod.
 
@@ -22,7 +28,7 @@ $ minikube kubectl -- patch deployment -n ingress-nginx ingress-nginx-controller
 
 # Deploy Arkmq-org operator
 First you need to deploy the Arkmq-org operator.
-If you are not sure how to deploy the operator take a look at [this blog](/docs/tutorials/using-operator.md).
+If you are not sure how to deploy the operator take a look at [this blog](using_operator.md).
 
 # Download the test certficates from Apache ActiveMQ Artemis
 ```shell script

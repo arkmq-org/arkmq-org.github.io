@@ -1,6 +1,16 @@
 ---
-sidebar_position: 3
-id: bundle
+title: "Bundle"
+description: "Bundle arkmq-org.io"
+lead: "Bundle arkmq-org.io"
+date: 2020-10-06T08:49:31+00:00
+lastmod: 2020-10-06T08:49:31+00:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "help"
+weight: 630
+toc: true
 ---
 
 # Bundle

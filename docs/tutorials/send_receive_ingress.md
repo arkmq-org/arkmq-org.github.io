@@ -1,8 +1,14 @@
 ---
-id: send-and-receive-ingress
+title: "Exchanging messages over an ssl ingress"  
+description: "Steps to get a producer and a consummer exchanging messages over a deployed broker on kubernetes using an ingress"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "send-receive"
+weight: 110
+toc: true
 ---
-
-# Exchanging messages over an ssl ingress
 
 ### Prerequisite
 
@@ -61,7 +67,7 @@ export CLUSTER_IP=$(minikube ip --profile tutorialtester)
 #### Make sure the domain of your cluster is resolvable
 
 If you are running your OpenShift cluster locally, you might not be able to
-resolve the urls to IPs out of the blue. Follow [this guide](/docs/help/001-hostname-resolution.md) to configure your setup.
+resolve the urls to IPs out of the blue. Follow [this guide](/docs/help/hostname_resolution.md) to configure your setup.
 
 This tutorial will follow the simple /etc/hosts approach, but feel free to use
 the most appropriate one for you.

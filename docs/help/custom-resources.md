@@ -1,9 +1,17 @@
 ---
-sidebar_position: 4
-id: custom-resources
+title: "Custom Resources"
+description: "Custom Resource arkmq-org.io"
+lead: "Custom Resource arkmq-org.io"
+date: 2020-10-06T08:49:31+00:00
+lastmod: 2020-10-06T08:49:31+00:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "help"
+weight: 630
+toc: true
 ---
-
-# Custom Resources
 
 ## Custom Resource configuration reference
 A Custom Resource Definition (CRD) is a schema of configuration items for a custom Kubernetes object deployed with an Operator. 

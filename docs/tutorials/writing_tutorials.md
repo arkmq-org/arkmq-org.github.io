@@ -1,8 +1,14 @@
 ---
-id: writing-tutorials
+title: "Writing executable tutorials"
+description: "How to write an executable tutorial"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "tutorials"
+weight: 110
+toc: true
 ---
-
-# Writing executable tutorials
 
 ### The terminology: Stages, chunks and commands
 
@@ -303,9 +309,7 @@ go run test/utils/tutorials/tester.go \
    --tutorials-root ${TUTORIALS_FOLDER} | grep "SUCCESS.*someID" || exit 0
 ```
 ```shell tutorial_tester
-
-                                                                                
-SUCCESS: echo executed because test4/someID got executed
+                                                                                SUCCESS: echo executed because test4/someID got executed
 
 ```
 As we can see only the first teardown command did run.

@@ -1,9 +1,17 @@
 ---
-sidebar_position: 6
-id: operator
+title: "Operator"
+description: "Operator arkmq-org.io"
+lead: "Operator arkmq-org.io"
+date: 2020-10-06T08:49:31+00:00
+lastmod: 2020-10-06T08:49:31+00:00
+draft: false
+images: []
+menu:
+  docs:
+    parent: "help"
+weight: 630
+toc: true
 ---
-
-# Operator
 
 ## Overview of the arkmq-org Operator Custom Resource Definitions
 
@@ -119,7 +127,7 @@ spec:
       value: "--zap-log-level=debug"
 ```
 
-Note: The env var name must be **ARGS** and the value is **--zap-log-level=\{level\};** where \{level\} must
+Note: The env var name must be **ARGS** and the value is **--zap-log-level={level}** where {level} must
 be one of **debug**, **info** and **error**. Any other values will be ignored.
 
 After editing the Subscription yaml as such, save it and the operator will restart with the given log level.
@@ -499,7 +507,8 @@ spec:
       periodSeconds: 5
 ```
 
-If no Liveness probe is configured or the handler itself is missing from a configured Liveness Probe then the Operator will create a default TCP Probe that will check the liveness of the broker by connecting to the web Server port, the default config is:
+If no Liveness probe is configured or the handler itself is missing from a configured Liveness Probe then  the Operator 
+will create a default TCP Probe that will check the liveness of the broker by connecting to the web Server port, the default config is:
 
 ```yaml
 spec:
@@ -1060,6 +1069,7 @@ The CR Status sub resource will contain feedback via the Valid Condition if vali
 
 In cases where a rollout of the stateful set is necessitated via a new feature or bug fix but not immediately desirable, potentially because of the necessary broker restart, it is possible to block the reconcile of a CR. Applying the `arkmq.org/block-reconcile` boolean annotation to a CR will indicate that the operator should not reconcile the CR. The CR status will reflect the blocked state via an additional `ReconcileBlocked` Condition. Once the annotation is removed or set to false on the CR, reconcile will resume.
 
+
 ## Enable broker's metrics plugin
 
 The ActiveMQ Artemis Broker comes with a metrics plugin to expose metrics data. The metrics data can be collected by tools such as Prometheus and visualized by tools such as Grafana.
@@ -1306,7 +1316,7 @@ spec:
 ```
 When deploying the above CR, the PVC volume will be mounted to path **/opt/mydata** in the broker container of both broker pods. The **extraVolumeMounts** is optional. If not specified a default mountPath is given based on the type of the volume, following the pattern:
 
-/amq/extra/volumes/\<volume.name\>
+/amq/extra/volumes/`<volume.name>`
 
 For example if you configure to attach a PersistentVolumeClaim type volume called `mydata`, the default mount path is **/amq/extra/volumes/mydata**.
 
@@ -1340,9 +1350,9 @@ The **extraVolumeClaimTemplates** is a list of PVC specs. The key is the **pvc n
 When deploying the above CR, the operator will append the external PVC to the statefulset's PersistentVolumeClaimTemplate field. When the statesulset rolls out the pods it will mount matching PVCs to each pod.
 
 Note for each pod the PVC's name must follow the pattern `<volumeName>-<statefulset-name>-<ordinal>`.
-For the above CR the matching PVC names are **mydata-artemis-broker-ss-0** for pod0 and **mydata-artemis-broker-ss-1** for pod1 respectively. You can configure an optional VolumeMount for each PVC under **extraVolumeMounts**. If not specified the default mount path is **/opt/\<volumeName\>/data**.
+For the above CR the matching PVC names are **mydata-artemis-broker-ss-0** for pod0 and **mydata-artemis-broker-ss-1** for pod1 respectively. You can configure an optional VolumeMount for each PVC under **extraVolumeMounts**. If not specified the default mount path is **/opt/`<volumeName>`/data**.
 
-For complete configruation options please take a look at the api definitions of [broker CRD].
+For complete configruation options please take a look at the api definitions of [broker CRD](../../api/v1beta1/activemqartemis_types.go).
 
 ## Using cert-manager and trust-manager configure brokers
 

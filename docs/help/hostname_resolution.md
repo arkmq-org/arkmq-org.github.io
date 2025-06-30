@@ -1,9 +1,15 @@
 ---
-sidebar_position: 1
-id: hostname-resolution
+title: "Resolve you cluster domain"
+description: "Various possible configuration to make your local cluster domain
+resolvable"
+draft: false
+images: []
+menu:
+  docs:
+    parent: "help"
+weight: 110
+toc: true
 ---
-
-# Resolve your Cluster Domain
 
 If you are running a local `k8s` instance, you might want to configure your
 local setup so that it is able to resolve the domain of the cluster. So that
