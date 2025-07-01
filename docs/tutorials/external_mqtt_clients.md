@@ -13,7 +13,7 @@ toc: true
 When you expose an acceptor to external clients (that is, by setting the value of the expose parameter to true), the Operator automatically creates an ingress on Kubernetes or a route on OpenShift for each broker pod of the deployment. An external client can connect to the broker by specifying the full host name of the ingress/route created for the broker pod.
 
 # Prerequisite
-Before you start you need to have access to a running Kubernetes cluster environment. A [Minikube](https://minikube.sigs.k8s.io/docs/start/) with [Ingress](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/) running on your laptop will just do fine. The arkmq-org operator also runs in Openshift cluster environment like [CodeReady Container](https://developers.redhat.com/products/codeready-containers/overview). In this blog we assume you have Kubernetes cluster environment. Execute the following command to enable Ingress in minikube:
+Before you start you need to have access to a running Kubernetes cluster environment. A [Minikube](https://minikube.sigs.k8s.io/docs/start/) with [Ingress](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/) running on your laptop will just do fine. The arkmq-org operator also runs in Openshift cluster environment like [CodeReady Container](https://developers.redhat.com/products/openshift-local/overview). In this blog we assume you have Kubernetes cluster environment. Execute the following command to enable Ingress in minikube:
 
 ```shell script
 $ minikube addons enable ingress

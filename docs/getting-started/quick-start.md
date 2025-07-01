@@ -26,7 +26,7 @@ resource.
 ## General environment requirements
 
 Currently the operator is tested against kubernetes v1.25 and above.
-You can install a [Minikube](https://minikube.sigs.k8s.io/docs/) or a [CodeReady Containers(CRC)](https://developers.redhat.com/products/codeready-containers/overview) to deploy the operator.
+You can install a [Minikube](https://minikube.sigs.k8s.io/docs/) or a [CodeReady Containers(CRC)](https://developers.redhat.com/products/openshift-local/overview) to deploy the operator.
 
 ## Getting the code and build the image
 
