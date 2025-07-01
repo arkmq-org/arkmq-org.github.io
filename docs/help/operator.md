@@ -477,7 +477,7 @@ via the **kubectl scale** command. For example, suppose you use **kubectl** scal
 but the value of **deploymentPlan.size** in your CR is still 3. In this case, Kubernetes initially scales the deployment down to two brokers. 
 However, when the scaledown operation is complete, the Operator restores the deployment to three brokers, as specified in the CR.
 
-3. As described in Deploying the Operator using the CLI, if you create a broker deployment with persistent storage (that is, by setting persistenceEnabled=true in your CR), you might need to provision Persistent Volumes (PVs) for the arkmq-org Operator to claim for your broker Pods. If you scale down the size of your broker deployment, the Operator releases any PVs that it previously claimed for the broker Pods that are now shut down. However, if you remove your broker deployment by deleting your CR, arkmq-org Operator does not release Persistent Volume Claims (PVCs) for any broker Pods that are still in the deployment when you remove it. In addition, these unreleased PVs are unavailable to any new deployment. In this case, you need to manually release the volumes. For more information, see Releasing volumes in the Kubernetes documentation.
+3. As described in [Installing the Operator using the CLI](#installing-the-operator-using-the-cli), if you create a broker deployment with persistent storage (that is, by setting persistenceEnabled=true in your CR), you might need to provision Persistent Volumes (PVs) for the arkmq-org Operator to claim for your broker Pods. If you scale down the size of your broker deployment, the Operator releases any PVs that it previously claimed for the broker Pods that are now shut down. However, if you remove your broker deployment by deleting your CR, arkmq-org Operator does not release Persistent Volume Claims (PVCs) for any broker Pods that are still in the deployment when you remove it. In addition, these unreleased PVs are unavailable to any new deployment. In this case, you need to manually release the volumes. For more information, see Releasing volumes in the Kubernetes documentation.
 
 4. During an active scaling event, any further changes that you apply are queued by the Operator and executed only when scaling is complete. For example, suppose that you scale the size of your deployment down from four brokers to one. Then, while scaledown is taking place, you also change the values of the broker administrator user name and password. In this case, the Operator queues the user name and password changes until the deployment is running with one active broker.
 
@@ -1128,7 +1128,7 @@ spec:
   endpoints:
   - port: console-jolokia
 ```
-For a complete example please refer to this arkmq-org example.
+For a complete example please refer to this [arkmq-org example](https://github.com/arkmq-org/arkmq-examples/tree/main/operator/prometheus).
 
 ## Enabling Operator Metrics
 

@@ -222,4 +222,3 @@ It shows queue TEST's message count is **200** now!
 ### More information
 
 * Check out [arkmq-org project repo](https://github.com/arkmq-org)
-* Reach the [dev team at slack](https://arkmq-org.slack.com) for questions/issues/help
