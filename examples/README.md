@@ -1,7 +1,3 @@
----
-hide_table_of_contents: true
----
-
 # arkmq-org.io examples
 
 This directory contains example YAML files to create and configure an Artemis broker on Kubernetes.
