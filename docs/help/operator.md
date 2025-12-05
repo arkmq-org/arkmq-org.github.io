@@ -776,6 +776,24 @@ spec:
 ## Custom Modifications via a Strategic Merge Patch
 
 Occasionally it is necessary to make customisations to the spec of a managed resource. The `resourceTemplate.patch` attribute can be used to apply such customisations. The `patch` is appled by the operator using a [strategic merge](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/update-api-object-kubectl-patch/#notes-on-the-strategic-merge-patch) before submitting to the api server.
+In the following example, the `spec.publishNotReadyAddresses` attribute of the services created by the operator is set to `false`:
+
+```yaml
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: broker
+spec:
+  resourceTemplates:
+  - selector:
+      kind: "Service"
+    patch:
+      kind: "Service"
+      spec:
+        publishNotReadyAddresses: false
+```
+
+The string values in the `patch` field support the following variables: $(CR_NAME), $(CR_NAMESPACE), $(BROKER_ORDINAL), $(ITEM_NAME), $(RES_NAME) and $(INGRESS_DOMAIN). They are replaced before applying the `patch`.
 In the following example, a custom security context is added to the internal broker container of the managed StatefulSet by patching just the required attribute. Note: `name` is the mergeKey, it must match that of the managed container with the CR.Name prefix:
 
 ```yaml
@@ -793,7 +811,7 @@ spec:
         template:
           spec:
             containers:
-            - name: "broker-container"
+            - name: "$(CR_NAME)-container"
               securityContext:
                 runAsNonRoot: true
 ```
@@ -1063,6 +1081,8 @@ In order for the operator to be able to use mtls to connect to the broker operan
 The default operator cert secret name is `activemq-artemis-manager-cert` and the default operator trust bundle secret name is `activemq-artemis-manager-ca`. 
 If either of these secrets need to be named differently, an enviroment variable can provide the alternative name using key ACTIVEMQ_ARTEMIS_MANAGER_CERT_SECRET_NAME or ACTIVEMQ_ARTEMIS_MANAGER_CA_SECRET_NAME.
 
+In restricted mode, the operator automatically configures control plane authentication for common services. For Prometheus metrics scraping, the operator reads the certificate from a prometheus cert secret and configures the broker to grant metrics access to that certificate's Common Name (CN). The operator first checks for a CR-specific secret `[cr-name]-[base-name]` (allowing per-CR isolation), then falls back to the shared `[base-name]` secret. The base name defaults to `prometheus-cert` but can be overridden using the BASE_PROMETHEUS_CERT_SECRET_NAME environment variable (e.g., if set to `custom-prometheus`, it checks `my-broker-custom-prometheus` then `custom-prometheus`).
+
 ## Locking down a broker deployment
 
 Often when verification is complete it is desirable to lock down the broker images and prevent auto upgrades, which will result in a roll-out of images and a restart of your broker.
@@ -1214,7 +1234,7 @@ spec:
 
 When deploying the above custom resource the operator will spread matching pods among the given topology
 
-### Container SecurityContext
+## Container SecurityContext
 
 The ActiveMQArtemis custom resource offers a container level SecurityContext option for the broker that holds security configuration that will be applied to the containers.
 
@@ -1229,6 +1249,68 @@ spec:
     containerSecurityContext:
       runAsNonRoot: true
 ```
+
+### Enabling Read-Only Root Filesystem
+
+You can configure the broker containers to use a read-only root filesystem for enhanced security. This prevents any writes to the container's root filesystem at runtime. To enable this feature, set `readOnlyRootFilesystem: true` in the container security context and provide the necessary writable volumes using resource templates.
+
+When the root filesystem is read-only, the broker needs writable volumes for:
+- `/home/jboss` - The broker instance directory
+- `/opt/jboss/container/jolokia/etc` - Jolokia agent configuration (when Jolokia is enabled)
+- `/tmp` - Temporary files created by readiness probe scripts
+
+Additionally, environment variables `APPLICATION_NAME` and `PING_SVC_NAME` must be explicitly set as the launch script cannot substitute them in the jgroups-ping.xml file when the root filesystem is read-only.
+
+Here's an example configuration:
+
+```yaml
+apiVersion: broker.amq.io/v1beta1
+kind: ActiveMQArtemis
+metadata:
+  name: broker
+  namespace: activemq-artemis-operator
+spec:
+  deploymentPlan:
+    jolokiaAgentEnabled: true
+    containerSecurityContext:
+      readOnlyRootFilesystem: true
+    resourceTemplates:
+      - selector:
+          kind: StatefulSet
+        patch:
+          kind: StatefulSet
+          spec:
+            template:
+              spec:
+                volumes:
+                  - name: jboss-home
+                    emptyDir: {}
+                  - name: jolokia-config
+                    emptyDir: {}
+                  - name: tmp-dir
+                    emptyDir: {}
+                initContainers:
+                  - name: $(CR_NAME)-container-init
+                    volumeMounts:
+                      - name: jboss-home
+                        mountPath: /home/jboss
+                containers:
+                  - name: $(CR_NAME)-container
+                    env:
+                      - name: APPLICATION_NAME
+                        value: $(CR_NAME)
+                      - name: PING_SVC_NAME
+                        value: ping-svc
+                    volumeMounts:
+                      - name: jboss-home
+                        mountPath: /home/jboss
+                      - name: jolokia-config
+                        mountPath: /opt/jboss/container/jolokia/etc
+                      - name: tmp-dir
+                        mountPath: /tmp
+```
+
+Note: If you are not using Jolokia (`jolokiaAgentEnabled: false`), you can omit the `jolokia-config` volume and its corresponding volume mount.
 
 ## Configuring Jolokia Access
 
